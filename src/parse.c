@@ -196,6 +196,11 @@ int create_db_header(struct dbheader_t **headerOut) {
         return STATUS_ERROR;
     }
 
+	if (headerOut == NULL) {
+		printf("INVALID header pointer argument\n");
+		return STATUS_ERROR;
+	}
+
     header->magic = HEADER_MAGIC;
     header->version = 1;
     header->count = 0;
