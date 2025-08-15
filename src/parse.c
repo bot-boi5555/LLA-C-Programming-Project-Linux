@@ -26,10 +26,15 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t** employeePtr, char
     unsigned int hours = 0;
 
     unsigned short lastIndex = 0;
-
+	
+	if (dbhdr == NULL) {
+		printf("Invalid header pointer argument\n");
+		return STATUS_ERROR;
+    }
+	
 	dbhdr->count++;
 
-	if (employeePtr == NULL) {
+	if (employeePtr == NULL || *employeePtr == NULL) {
 		printf("Invalid header pointer argument\n");
 		return STATUS_ERROR;
 	}
