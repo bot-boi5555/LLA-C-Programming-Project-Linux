@@ -106,10 +106,6 @@ int main(int argc, char *argv[]) {
     }
     // add new employee
     if (addString != NULL) {
-        header->count++;
-
-        employees = realloc(employees, header->count * sizeof(struct employee_t));
-
         add_employee(header, employees, addString);
     }
 
