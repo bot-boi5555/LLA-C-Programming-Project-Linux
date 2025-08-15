@@ -9,8 +9,18 @@
 #include "common.h"
 #include "parse.h"
 
-void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
+int list_employees(struct dbheader_t *dbhdr, struct employee_t *employees) {
+	
+	if (dbhdr == NULL) {
+		printf("Invalid header pointer argument\n");
+		return STATUS_ERROR;
+	}
 
+	if (employees == NULL) {
+		printf("Invalid employee pointer argument\n");
+		return STATUS_ERROR;
+	}
+	
     for (int i = 0; i < dbhdr->count; ++i) {
         printf("Employee %d\n", i);
         printf("\tName: %s\n", employees[i].name);
