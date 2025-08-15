@@ -25,8 +25,25 @@ int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *a
     char* address = NULL;
     unsigned int hours = 0;
 
-    unsigned short lastIndex = dbhdr->count - 1;
+    unsigned short lastIndex = 0;
 
+	dbhdr->count++;
+
+	if (employeePtr == NULL) {
+		printf("Invalid header pointer argument\n");
+		return STATUS_ERROR;
+	}
+
+	*employeePtr = realloc(*employeePtr, sizeof(struct employee_t) * dbhdr->count);
+
+	if (*employeePtr == NULL) {
+		printf("Failed to realloc memory for new employee\n");
+		return STATUS_ERROR;
+	}
+
+	lastIndex = dbhdr->count - 1;
+	struct employee_t* employees = *employeePtr;
+	
     //printf("%s\n", addstring);
 
     // "" because the delimiter is a string
