@@ -114,8 +114,7 @@ int output_file(int fd, struct dbheader_t *dbhdr, struct employee_t *employees) 
         write(fd, &(employees[i]), sizeof(struct employee_t));
     }
 
-    
-
+    return STATUS_SUCCESS;
 }	
 
 int validate_db_header(int fd, struct dbheader_t **headerOut) {
